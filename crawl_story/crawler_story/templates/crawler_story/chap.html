@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ story.tên_truyện }}</title>
+</head>
+<style>
+    h1{
+
+    }
+</style>
+<body>
+{{ context_var|safe }}
+{% autoescape off %}
+    {% for item in chaper %}
+    <div><h1 style="a">{{ item.tên_chap }}</h1><br>{{ item.nội_dung }}</div>
+    {% endfor %}
+{% endautoescape %}
+</body>
+</html>

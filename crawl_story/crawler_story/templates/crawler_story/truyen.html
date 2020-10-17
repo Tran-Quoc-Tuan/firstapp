@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Truyện</title>
+</head>
+<body>
+{% for item in truyen %}
+    <p>
+        <a href="{% url 'chaper' item.tên_truyện %}">{{ item.tên_truyện }}</a>
+        <br>
+        {{ item.tác_giả }}
+        <br>
+        {% for a in item.thể_loại.all %} <b>{{ a }}</b> {% endfor %}
+    </p>
+{% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if truyen.has_previous %}
+            <a href="?page={{ truyen.previous_page_number }}">Previous</a>
+        {% endif %}
+    </span>
+
+    <span class="current">
+        Page {{ truyen.number }} of {{ truyen.paginator.num_pages }}.
+    </span>
+
+    <span>
+        {% if truyen.has_next %}
+            <a href="?page={{ truyen.next_page_number }}">Next</a>
+        {% endif %}
+    </span>
+</div>
+</body>
+</html>
